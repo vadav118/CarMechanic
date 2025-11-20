@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMechanic", "CarMechanic\CarMechanic.csproj", "{A9984ACE-C5C8-48D8-BBE4-23009B3CA8BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMechanic.UI", "CarMechanic.UI\CarMechanic.UI.csproj", "{6312CB04-4548-4EF2-90E8-39621B2025EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9984ACE-C5C8-48D8-BBE4-23009B3CA8BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9984ACE-C5C8-48D8-BBE4-23009B3CA8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9984ACE-C5C8-48D8-BBE4-23009B3CA8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9984ACE-C5C8-48D8-BBE4-23009B3CA8BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6312CB04-4548-4EF2-90E8-39621B2025EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6312CB04-4548-4EF2-90E8-39621B2025EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6312CB04-4548-4EF2-90E8-39621B2025EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6312CB04-4548-4EF2-90E8-39621B2025EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ytzvg1JH5bo=",
+  "success": true,
+  "projectFilePath": "/home/d007tnt/RiderProjects/CarMechanic/CarMechanic/CarMechanic.csproj",
+  "expectedPackageFiles": [
+    "/home/d007tnt/.nuget/packages/microsoft.aspnetcore.openapi/9.0.11/microsoft.aspnetcore.openapi.9.0.11.nupkg.sha512",
+    "/home/d007tnt/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512",
+    "/home/d007tnt/.nuget/packages/microsoft.netcore.app.ref/9.0.4/microsoft.netcore.app.ref.9.0.4.nupkg.sha512",
+    "/home/d007tnt/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.4/microsoft.aspnetcore.app.ref.9.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}
