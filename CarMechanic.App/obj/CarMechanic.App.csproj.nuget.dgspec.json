@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/d007tnt/RiderProjects/CarMechanic/CarMechanic.UI/CarMechanic.UI.csproj": {}
+    "/home/d007tnt/RiderProjects/CarMechanic/CarMechanic.App/CarMechanic.App.csproj": {}
   },
   "projects": {
-    "/home/d007tnt/RiderProjects/CarMechanic/CarMechanic.UI/CarMechanic.UI.csproj": {
+    "/home/d007tnt/RiderProjects/CarMechanic/CarMechanic.App/CarMechanic.App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/d007tnt/RiderProjects/CarMechanic/CarMechanic.UI/CarMechanic.UI.csproj",
-        "projectName": "CarMechanic.UI",
-        "projectPath": "/home/d007tnt/RiderProjects/CarMechanic/CarMechanic.UI/CarMechanic.UI.csproj",
+        "projectUniqueName": "/home/d007tnt/RiderProjects/CarMechanic/CarMechanic.App/CarMechanic.App.csproj",
+        "projectName": "CarMechanic.App",
+        "projectPath": "/home/d007tnt/RiderProjects/CarMechanic/CarMechanic.App/CarMechanic.App.csproj",
         "packagesPath": "/home/d007tnt/.nuget/packages/",
-        "outputPath": "/home/d007tnt/RiderProjects/CarMechanic/CarMechanic.UI/obj/",
+        "outputPath": "/home/d007tnt/RiderProjects/CarMechanic/CarMechanic.App/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/d007tnt/.nuget/NuGet/NuGet.Config"
@@ -45,26 +45,43 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Components.WebAssembly": {
+            "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.11, )"
             },
-            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[9.0.11, )"
             },
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
+            "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
-              "version": "[9.0.11, )",
-              "autoReferenced": true
+              "version": "[9.0.11, )"
             },
-            "Microsoft.NET.Sdk.WebAssembly.Pack": {
-              "suppressParent": "All",
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[9.0.11, )",
-              "autoReferenced": true
+              "version": "[9.0.11, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[9.0.6, )"
             }
           },
           "imports": [
@@ -78,23 +95,15 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[9.0.11, 9.0.11]"
-            }
-          ],
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
           "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.112/PortableRuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "browser-wasm": {
-          "#import": []
         }
       }
     }

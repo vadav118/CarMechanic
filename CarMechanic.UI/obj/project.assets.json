@@ -420,7 +420,7 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.4": {
+      "Microsoft.NET.ILLink.Tasks/9.0.11": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -853,7 +853,7 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/9.0.4": {
+      "Microsoft.NET.ILLink.Tasks/9.0.11": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -1654,14 +1654,13 @@
         "microsoft.jsinterop.webassembly.nuspec"
       ]
     },
-    "Microsoft.NET.ILLink.Tasks/9.0.4": {
-      "sha512": "xUdlUxiFwXhTYhB4VxKg/IA0+jlZXJPo70LYuMryWbJHdonIpZjw+7DO2B0pWwpXIOs6MlH5WVXPEtfrGEcVZA==",
+    "Microsoft.NET.ILLink.Tasks/9.0.11": {
+      "sha512": "NpXKpknZUGyyt2sZS5VmBF7RYa/CD3jF4Xud6Ip55fzEmm5mtXrMZVVjTPLdVlJoFUPM7fIab2krSYYiiC3UIQ==",
       "type": "package",
-      "path": "microsoft.net.illink.tasks/9.0.4",
+      "path": "microsoft.net.illink.tasks/9.0.11",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "Sdk/Sdk.props",
@@ -1671,24 +1670,8 @@
         "build/Microsoft.NET.ILLink.Analyzers.props",
         "build/Microsoft.NET.ILLink.Tasks.props",
         "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.9.0.4.nupkg.sha512",
+        "microsoft.net.illink.tasks.9.0.11.nupkg.sha512",
         "microsoft.net.illink.tasks.nuspec",
-        "tools/net472/ILLink.Tasks.dll",
-        "tools/net472/ILLink.Tasks.dll.config",
-        "tools/net472/Mono.Cecil.Mdb.dll",
-        "tools/net472/Mono.Cecil.Pdb.dll",
-        "tools/net472/Mono.Cecil.Rocks.dll",
-        "tools/net472/Mono.Cecil.dll",
-        "tools/net472/Sdk/Sdk.props",
-        "tools/net472/System.Buffers.dll",
-        "tools/net472/System.Collections.Immutable.dll",
-        "tools/net472/System.Memory.dll",
-        "tools/net472/System.Numerics.Vectors.dll",
-        "tools/net472/System.Reflection.Metadata.dll",
-        "tools/net472/System.Runtime.CompilerServices.Unsafe.dll",
-        "tools/net472/build/Microsoft.NET.ILLink.Analyzers.props",
-        "tools/net472/build/Microsoft.NET.ILLink.Tasks.props",
-        "tools/net472/build/Microsoft.NET.ILLink.targets",
         "tools/net9.0/ILLink.Tasks.deps.json",
         "tools/net9.0/ILLink.Tasks.dll",
         "tools/net9.0/Mono.Cecil.Mdb.dll",
@@ -1752,7 +1735,7 @@
     "net9.0": [
       "Microsoft.AspNetCore.Components.WebAssembly >= 9.0.11",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 9.0.11",
-      "Microsoft.NET.ILLink.Tasks >= 9.0.4",
+      "Microsoft.NET.ILLink.Tasks >= 9.0.11",
       "Microsoft.NET.Sdk.WebAssembly.Pack >= 9.0.11"
     ]
   },
@@ -1794,7 +1777,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -1812,7 +1795,7 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[9.0.4, )",
+            "version": "[9.0.11, )",
             "autoReferenced": true
           },
           "Microsoft.NET.Sdk.WebAssembly.Pack": {
@@ -1835,10 +1818,6 @@
         "warn": true,
         "downloadDependencies": [
           {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[9.0.4, 9.0.4]"
-          },
-          {
             "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
             "version": "[9.0.11, 9.0.11]"
           }
@@ -1848,7 +1827,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/9.0.112/PortableRuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
