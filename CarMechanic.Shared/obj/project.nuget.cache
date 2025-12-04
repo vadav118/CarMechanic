@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zQ3+tnjImcQ=",
+  "dgSpecHash": "FVdYO7H5t30=",
   "success": true,
-  "projectFilePath": "C:\\Users\\tntlo\\RiderProjects\\CarMechanic\\CarMechanic.Shared\\CarMechanic.Shared.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\tntlo\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.11\\microsoft.netcore.app.ref.9.0.11.nupkg.sha512",
-    "C:\\Users\\tntlo\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.11\\microsoft.windowsdesktop.app.ref.9.0.11.nupkg.sha512",
-    "C:\\Users\\tntlo\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.11\\microsoft.aspnetcore.app.ref.9.0.11.nupkg.sha512"
-  ],
+  "projectFilePath": "/home/d007tnt/RiderProjects/CarMechanic/CarMechanic.Shared/CarMechanic.Shared.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

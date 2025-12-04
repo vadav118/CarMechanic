@@ -1,3 +1,4 @@
+using CarMechanic;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 

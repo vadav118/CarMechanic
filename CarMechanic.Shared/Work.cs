@@ -4,13 +4,26 @@ using System.Runtime.CompilerServices;
 
 namespace CarMechanic.Shared;
 
-  
+public enum WorkStatus
+{   
+    ListedWork,
+    Working,
+    Completed
+}
+
+public enum WorkCategory
+{   
+    BodyWork,
+    Engine,
+    Suspension,
+    Breaks
+}
     
     public class Work
     {   
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int WorkId { get; set; }
+        public string WorkId { get; set; }
         
         [Required]
         [ForeignKey("CustomerId")]
@@ -24,7 +37,7 @@ namespace CarMechanic.Shared;
         public DateOnly ManufacturingDate { get; set; }
         
         [Required]
-        public string WorkCategory { get; set; }
+        public WorkCategory Category { get; set; }
         
         [Required]
         public string WorkDescription { get; set; }
@@ -34,7 +47,7 @@ namespace CarMechanic.Shared;
         public int Fault { get; set; }
         
         [Required]
-        public string WorkStatus { get; set; }
+        public WorkStatus Status { get; set; }
     }
 
 
