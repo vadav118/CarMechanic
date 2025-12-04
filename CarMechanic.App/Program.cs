@@ -1,8 +1,12 @@
-
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<CarMechanicContext>(o =>
+{
+    o.UseSqlite(builder.Configuration.GetConnectionString("SQLite"));
+});
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
