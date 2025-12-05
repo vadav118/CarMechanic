@@ -23,10 +23,9 @@ public enum WorkCategory
     {   
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string WorkId { get; set; }
+        public string Id { get; set; }
         
         [Required]
-        [ForeignKey("CustomerId")]
         public string CustomerId { get; set; }
         
         [Required]
@@ -34,7 +33,9 @@ public enum WorkCategory
         public string LicensePlate { get; set; }
         
         [Required]
-        public DateOnly ManufacturingDate { get; set; }
+        [DataType(DataType.Date)]
+        [TimeValidation]
+        public DateTime ManufacturingDate { get; set; }
         
         [Required]
         public WorkCategory Category { get; set; }
@@ -43,7 +44,7 @@ public enum WorkCategory
         public string WorkDescription { get; set; }
         
         [Required]
-        [Range(typeof(int), "0", "10")]
+        [Range(0,10)]
         public int Fault { get; set; }
         
         [Required]

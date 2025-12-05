@@ -53,7 +53,13 @@ public class WorkService: IWorkService
 
     public async Task UpdateWork(Work work)
     {
-        var oldWork = await GetWorkById(work.WorkId);
+        var oldWork = await GetWorkById(work.Id);
+
+        if (!IsWorkStatusCorrect(oldWork, work))
+        {
+            return;
+        }
+        
         if (oldWork is not null)
         {
             oldWork.CustomerId = work.CustomerId;
@@ -67,5 +73,10 @@ public class WorkService: IWorkService
         _dbContext.Works.Update(oldWork);
         await _dbContext.SaveChangesAsync();
         _logger.LogInformation("Work Updated: {@Work}", work);
+    }
+
+    public bool IsWorkStatusCorrect(Work oldWork, Work newWork)
+    {
+        return (int)oldWork.Status < (int)newWork.Status && ((int)newWork.Status-(int)oldWork.Status) == 1;
     }
 }

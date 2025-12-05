@@ -35,7 +35,7 @@ public class CustomerService: ICustomerService
             return;
         }
         
-        _dbContext.Works.RemoveRange(_dbContext.Works.Where(W => W.CustomerId == customer.CustomerId).ToList());
+        _dbContext.Works.RemoveRange(_dbContext.Works.Where(W => W.CustomerId == customer.Id).ToList());
         _dbContext.Customers.Remove(customer);
         await _dbContext.SaveChangesAsync();
         
@@ -54,7 +54,7 @@ public class CustomerService: ICustomerService
  
     public async Task UpdateCustomer(Customer customer)
     {
-        var oldCustomer = await GetCustomerById(customer.CustomerId);
+        var oldCustomer = await GetCustomerById(customer.Id);
 
         if (oldCustomer is not null)
         {
