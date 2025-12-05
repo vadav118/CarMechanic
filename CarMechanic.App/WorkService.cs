@@ -1,4 +1,6 @@
 ﻿using CarMechanic.Shared;
+using Microsoft.EntityFrameworkCore;
+
 namespace CarMechanic;
 
 
@@ -35,6 +37,35 @@ public class WorkService: IWorkService
         
         _dbContext.Works.Remove(work);
         await _dbContext.SaveChangesAsync();
+        _logger.LogInformation("Work Deleted: {@Work}", work);
     }
-    
+
+    public async Task<List<Work>> GetAllWorks()
+    {
+        return await _dbContext.Works.ToListAsync();
+    }
+
+    public async Task<Work> GetWorkById(string id)
+    {
+        var work = await _dbContext.Works.FindAsync(id);
+        return work;
+    }
+
+    public async Task UpdateWork(Work work)
+    {
+        var oldWork = await GetWorkById(work.WorkId);
+        if (oldWork is not null)
+        {
+            oldWork.CustomerId = work.CustomerId;
+            oldWork.LicensePlate = work.LicensePlate;
+            oldWork.Category = work.Category;
+            oldWork.Status = work.Status;
+            oldWork.Fault = work.Fault;
+            oldWork.ManufacturingDate = work.ManufacturingDate;
+            oldWork.WorkDescription = work.WorkDescription;
+        }
+        _dbContext.Works.Update(oldWork);
+        await _dbContext.SaveChangesAsync();
+        _logger.LogInformation("Work Updated: {@Work}", work);
+    }
 }
