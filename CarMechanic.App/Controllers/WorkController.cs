@@ -36,10 +36,11 @@ public class WorkController: ControllerBase
     public async Task<IActionResult> Post([FromBody] Work work)
     {
         var existingWork = await _workService.GetWorkById(work.Id);
-        if (existingWork is null)
+        if (existingWork is not null)
         {
-            return NotFound();
+            return Conflict();
         }
+        await _workService.AddWork(work);
         return Ok();
     }
 

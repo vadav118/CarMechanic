@@ -35,6 +35,7 @@ public enum WorkCategory
         [Required]
         [DataType(DataType.Date)]
         [TimeValidation]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime ManufacturingDate { get; set; }
         
         [Required]
@@ -49,6 +50,8 @@ public enum WorkCategory
         
         [Required]
         public WorkStatus Status { get; set; }
+        
+        public float EstimatedHours { get; set; }
     }
 
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xfzlnlIHQMA=",
+  "dgSpecHash": "tesLglK636o=",
   "success": true,
   "projectFilePath": "C:\\Users\\tntlo\\RiderProjects\\CarMechanic\\CarMechanic.UI\\CarMechanic.UI.csproj",
   "expectedPackageFiles": [
@@ -29,8 +29,8 @@
     "C:\\Users\\tntlo\\.nuget\\packages\\microsoft.jsinterop\\9.0.11\\microsoft.jsinterop.9.0.11.nupkg.sha512",
     "C:\\Users\\tntlo\\.nuget\\packages\\microsoft.jsinterop.webassembly\\9.0.11\\microsoft.jsinterop.webassembly.9.0.11.nupkg.sha512",
     "C:\\Users\\tntlo\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.11\\microsoft.net.illink.tasks.9.0.11.nupkg.sha512",
-    "C:\\Users\\tntlo\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.5\\microsoft.net.sdk.webassembly.pack.9.0.5.nupkg.sha512",
-    "C:\\Users\\tntlo\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.5\\microsoft.netcore.app.ref.9.0.5.nupkg.sha512"
+    "C:\\Users\\tntlo\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\10.0.0\\microsoft.net.sdk.webassembly.pack.10.0.0.nupkg.sha512",
+    "C:\\Users\\tntlo\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\9.0.11\\microsoft.netcore.app.runtime.mono.browser-wasm.9.0.11.nupkg.sha512"
   ],
   "logs": []
 }

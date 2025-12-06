@@ -77,6 +77,6 @@ public class WorkService: IWorkService
 
     public bool IsWorkStatusCorrect(Work oldWork, Work newWork)
     {
-        return (int)oldWork.Status < (int)newWork.Status && ((int)newWork.Status-(int)oldWork.Status) == 1;
+        return (int)oldWork.Status == (int)newWork.Status || ((int)oldWork.Status <= (int)newWork.Status && ((int)newWork.Status-(int)oldWork.Status) == 1);
     }
 }

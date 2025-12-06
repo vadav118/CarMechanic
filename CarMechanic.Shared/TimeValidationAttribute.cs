@@ -5,9 +5,9 @@ namespace CarMechanic.Shared;
 public class TimeValidationAttribute: ValidationAttribute
 {
     protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-    {
-        if (Convert.ToDateTime(value) <= DateTime.Today &&
-            Convert.ToDateTime(value) >= Convert.ToDateTime("1900-01-01"))
+    {   
+        var date = Convert.ToDateTime(value);
+        if (date <= DateTime.Today && date >= new DateTime(1900, 1, 1))
         {
             return ValidationResult.Success;
         }
