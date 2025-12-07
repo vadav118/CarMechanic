@@ -21,8 +21,8 @@ public class CustomerController: ControllerBase
         return Ok(customers);
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Customer>> GetById(string id)
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<Customer>> GetById(int id)
     {
         var customer = await _customerService.GetCustomerById(id);
         if (customer is null)
@@ -30,6 +30,12 @@ public class CustomerController: ControllerBase
             return NotFound();
         }
         return Ok(customer);
+    }
+
+    [HttpGet("{id:int}/works")]
+    public async Task<ActionResult<List<Work>>> GetWorks(int id)
+    {
+        return (await _customerService.GetWorks(id)).ToList();
     }
 
     [HttpPost]
@@ -44,8 +50,8 @@ public class CustomerController: ControllerBase
         return Ok();
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(string id, [FromBody] Customer customer)
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> Update(int id, [FromBody] Customer customer)
     {
         if (id != customer.Id)
         {
@@ -61,9 +67,10 @@ public class CustomerController: ControllerBase
         await _customerService.UpdateCustomer(customer);
         return Ok();
     }
+    
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(string id)
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete(int id)
     {
         var existingCustomer = await _customerService.GetCustomerById(id);
         if (existingCustomer is null)

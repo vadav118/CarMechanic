@@ -4,9 +4,10 @@ namespace CarMechanic;
 
 public interface ICustomerService
 {
-    Task<Customer> GetCustomerById(string customerId);
+    Task<Customer> GetCustomerById(int customerId);
     Task<List<Customer>> GetCustomers();
+    Task<List<Work>> GetWorks(int customerId);
     Task AddCustomer(Customer customer);
     Task UpdateCustomer(Customer customer);
-    Task DeleteCustomer(string customerId);
+    Task DeleteCustomer(int customerId);
 }

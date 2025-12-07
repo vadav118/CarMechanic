@@ -6,9 +6,9 @@ namespace CarMechanic.Shared;
 
 public enum WorkStatus
 {   
-    ListedWork,
-    Working,
-    Completed
+    ListedWork = 0,
+    Working = 1,
+    Completed = 2
 }
 
 public enum WorkCategory
@@ -18,25 +18,25 @@ public enum WorkCategory
     Suspension,
     Breaks
 }
+
+
     
     public class Work
     {   
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string Id { get; set; }
+        public int Id { get; private set; }
         
         [Required]
-        public string CustomerId { get; set; }
+        public int CustomerId { get; set; }
         
         [Required]
         [RegularExpression(@"^[A-Z]{3}-\d{3}$")]
         public string LicensePlate { get; set; }
         
         [Required]
-        [DataType(DataType.Date)]
         [TimeValidation]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime ManufacturingDate { get; set; }
+        public int ManufacturingYear { get; set; }
         
         [Required]
         public WorkCategory Category { get; set; }
@@ -51,7 +51,13 @@ public enum WorkCategory
         [Required]
         public WorkStatus Status { get; set; }
         
-        public float EstimatedHours { get; set; }
+       
+        public double Estimate { get; private set; }
+
+        public void CalculateEstimate()
+        {
+            Estimate = WorkEstimate.CalculateWorkEstimation(this);
+        }
     }
 
 

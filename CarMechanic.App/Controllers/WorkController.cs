@@ -21,8 +21,8 @@ public class WorkController: ControllerBase
         return Ok(works);
     }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Work>> GetWorkById(string id)
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<Work>> GetWorkById(int id)
     {
         var work = await _workService.GetWorkById(id);
         if (work is null)
@@ -44,8 +44,8 @@ public class WorkController: ControllerBase
         return Ok();
     }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(string id, [FromBody] Work work)
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> Update(int id, [FromBody] Work work)
     {
         if (id != work.Id)
         {
@@ -63,8 +63,8 @@ public class WorkController: ControllerBase
         return Ok();
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteWork(string id)
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> DeleteWork(int id)
     {
         var existingWork = await _workService.GetWorkById(id);
         if (existingWork is null)

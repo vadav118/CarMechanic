@@ -1,4 +1,5 @@
 ﻿using CarMechanic.Shared;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarMechanic;
@@ -21,13 +22,14 @@ public class WorkService: IWorkService
         {
             return;
         }
+        work.CalculateEstimate();
         await _dbContext.Works.AddAsync(work);
         await _dbContext.SaveChangesAsync();
         
         _logger.LogInformation("Work Added: {@Work}", work);
     }
 
-    public async Task DeleteWork(string workId)
+    public async Task DeleteWork(int workId)
     {   
         var work = await _dbContext.Works.FindAsync(workId);
         if (work is null)
@@ -45,7 +47,7 @@ public class WorkService: IWorkService
         return await _dbContext.Works.ToListAsync();
     }
 
-    public async Task<Work> GetWorkById(string id)
+    public async Task<Work> GetWorkById(int id)
     {
         var work = await _dbContext.Works.FindAsync(id);
         return work;
@@ -67,7 +69,7 @@ public class WorkService: IWorkService
             oldWork.Category = work.Category;
             oldWork.Status = work.Status;
             oldWork.Fault = work.Fault;
-            oldWork.ManufacturingDate = work.ManufacturingDate;
+            oldWork.ManufacturingYear = work.ManufacturingYear;
             oldWork.WorkDescription = work.WorkDescription;
         }
         _dbContext.Works.Update(oldWork);
@@ -75,8 +77,10 @@ public class WorkService: IWorkService
         _logger.LogInformation("Work Updated: {@Work}", work);
     }
 
-    public bool IsWorkStatusCorrect(Work oldWork, Work newWork)
+    private bool IsWorkStatusCorrect(Work oldWork, Work newWork)
     {
-        return (int)oldWork.Status == (int)newWork.Status || ((int)oldWork.Status <= (int)newWork.Status && ((int)newWork.Status-(int)oldWork.Status) == 1);
+        return ((int)oldWork.Status <= (int)newWork.Status );
     }
+    
+   
 }

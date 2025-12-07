@@ -27,7 +27,7 @@ public class CustomerService: ICustomerService
         _logger.LogInformation("Customer added {@Customer}",customer);
     }
 
-    public async Task DeleteCustomer(string customerId)
+    public async Task DeleteCustomer(int customerId)
     {
         var customer = await _dbContext.Customers.FindAsync(customerId);
         if (customer is null)
@@ -41,15 +41,21 @@ public class CustomerService: ICustomerService
         
         _logger.LogInformation("Customer removed {@Customer}",customer);
     }
-
+    
     public async Task<List<Customer>> GetCustomers()
     {
         return await _dbContext.Customers.ToListAsync();
     }
-    public async Task<Customer> GetCustomerById(string customerId)
+    public async Task<Customer> GetCustomerById(int customerId)
     {
         var customer = await _dbContext.Customers.FindAsync(customerId);  
         return customer;
+    }
+
+    public async Task<List<Work>> GetWorks(int  customerId)
+    {
+        var works = await _dbContext.Works.Where(W => W.CustomerId == customerId).ToListAsync();
+        return works;
     }
  
     public async Task UpdateCustomer(Customer customer)
