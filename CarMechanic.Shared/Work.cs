@@ -6,9 +6,9 @@ namespace CarMechanic.Shared;
 
 public enum WorkStatus
 {   
-    ListedWork = 0,
-    Working = 1,
-    Completed = 2
+    ListedWork,
+    Working,
+    Completed 
 }
 
 public enum WorkCategory
@@ -39,6 +39,7 @@ public enum WorkCategory
         public int ManufacturingYear { get; set; }
         
         [Required]
+        [Range(0,3)]
         public WorkCategory Category { get; set; }
         
         [Required]
@@ -49,6 +50,7 @@ public enum WorkCategory
         public int Fault { get; set; }
         
         [Required]
+        [Range(0,2)]
         public WorkStatus Status { get; set; }
         
        
