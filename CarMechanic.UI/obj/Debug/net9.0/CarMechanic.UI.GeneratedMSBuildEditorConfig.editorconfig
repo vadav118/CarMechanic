@@ -44,6 +44,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xXb3JrQWRkRm9ybS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-g4oen9yu35
 
+[C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/Components/WorkUpdateForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xXb3JrVXBkYXRlRm9ybS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-jyfzhk0f7u
+
 [C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-a4g368ca9w

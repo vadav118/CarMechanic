@@ -13,9 +13,11 @@
 <button type="button" @onclick="ToggleAddWorkForm">
     Add Job
 </button>
-<button type="button" onclick="ToggleUpdateWorkForm">
-   Update Job
+<button type="button" @onclick="ToggleUpdateWorkForm">
+    Update Job
 </button>
+<input type="number" @bind-value="searchId"/>
+<button type="button" @onclick="SearchById">Search</button>
 
 
 @if (showAddForm)
@@ -28,9 +30,16 @@
         </div>
 }
     
-<div class="update-form-container">
-    
-</div>
+@if (showUpdateForm)
+{
+    <div class="update-form-container">
+        <WorkUpdateForm
+            Work="newWork"
+            OnWorkUpdate="HandleWorkUpdate"
+            OnCancel="CloseUpdateForm">
+        </WorkUpdateForm>
+    </div>
+}
 
 
 @if (_works is not null)
@@ -79,8 +88,10 @@ else
 }
 
 @code{
-    
+
+    private int searchId;
     private bool showAddForm = false;
+    private bool showUpdateForm = false;
     private Work newWork = new Work();
     
     
@@ -88,11 +99,41 @@ else
     {
         _works = await WorkService.GetAllWorks();
         showAddForm = false;
+        newWork = new Work();
     }
 
+    private async Task SearchById()
+    {
+        if (searchId > 0)
+        {
+            var workbyid= await WorkService.GetWorkById(searchId);
+        
+            _works = workbyid != null ? new List<Work>() {workbyid} : new List<Work>(){};
+        }
+    }
+    
+    private async Task HandleWorkUpdate()
+    {
+        _works = await WorkService.GetAllWorks();
+        showUpdateForm = false;
+        newWork = new Work();
+    }
+
+    private void ToggleUpdateWorkForm()
+    {
+        showUpdateForm = !showUpdateForm;
+        if (showUpdateForm) showAddForm = false;
+    }
+    
     private void ToggleAddWorkForm()
     {
-        showAddForm = true;
+        showAddForm = !showAddForm;
+        if (showAddForm) showUpdateForm = false;
+    }
+    
+    private void CloseUpdateForm()
+    {
+        showUpdateForm = false;
     }
 
     private void CloseAddForm()
