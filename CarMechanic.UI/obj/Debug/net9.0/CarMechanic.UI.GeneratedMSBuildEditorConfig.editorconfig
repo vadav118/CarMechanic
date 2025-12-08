@@ -26,18 +26,24 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
+[C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/Pages/Works.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV29ya3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/Layout/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-a4g368ca9w
+
+[C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-e1l1082fa2

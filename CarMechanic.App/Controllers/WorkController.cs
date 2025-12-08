@@ -49,7 +49,7 @@ public class WorkController: ControllerBase
     {
         if (id != work.Id)
         {
-            return  BadRequest();
+            return BadRequest();
         }
 
         var oldWork = await _workService.GetWorkById(id);

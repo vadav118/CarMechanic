@@ -8,6 +8,6 @@ public interface ICustomerService
     Task<List<Customer>> GetAllCustomers();
     Task<List<Work>> GetWorksByCustomerId(int customerId);
     Task AddCustomer(Customer customer);
-    Task UpdateCustomer(Customer customer);
+    Task UpdateCustomer(int id,Customer customer);
     Task DeleteCustomer(int customerId);
 }

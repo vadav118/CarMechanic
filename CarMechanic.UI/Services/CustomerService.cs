@@ -31,9 +31,9 @@ public class CustomerService: ICustomerService
         await _httpClient.PostAsJsonAsync("/Customer", customer);
     }
 
-    public async Task UpdateCustomer(Customer customer)
+    public async Task UpdateCustomer(int id, Customer customer)
     {
-        await _httpClient.PutAsJsonAsync("/Customer", customer);
+        await _httpClient.PutAsJsonAsync($"/Customer/{id}", customer);
     }
 
     public async Task DeleteCustomer(int customerId)
