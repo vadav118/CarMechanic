@@ -1,4 +1,5 @@
-﻿namespace CarMechanic.Shared;
+﻿
+namespace CarMechanic.Shared;
 
 public static class WorkEstimate
 {
@@ -32,7 +33,7 @@ public static class WorkEstimate
             <= 9 => 0.8,
             _ => 1.0
         };
-
-        return hours * ageWeight * faultWeight;
+        
+        return Math.Round(hours * ageWeight * faultWeight,1,MidpointRounding.AwayFromZero);
     }
 }

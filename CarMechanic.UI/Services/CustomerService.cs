@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Json;
 using CarMechanic.Shared;
 
-namespace CarMechanic.UI;
+namespace CarMechanic.UI.Services;
 
 public class CustomerService: ICustomerService
 {
