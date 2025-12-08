@@ -43,6 +43,7 @@ public enum WorkCategory
         public WorkCategory Category { get; set; }
         
         [Required]
+        [MaxLength(100)]
         public string WorkDescription { get; set; }
         
         [Required]
@@ -55,11 +56,6 @@ public enum WorkCategory
         
        
         public double Estimate { get; private set; }
-
-        public void CalculateEstimate()
-        {
-            Estimate = WorkEstimate.CalculateWorkEstimation(this);
-        }
     }
 
 

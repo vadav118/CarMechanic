@@ -15,7 +15,9 @@ builder.Services.AddDbContext<CarMechanicContext>(o =>
 builder.Services.AddScoped<IWorkService, WorkService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddOpenApi();
+
 builder.Services.AddControllers();
+
 builder.Services.AddSwaggerGen();
 builder.Services.AddSerilog(options =>options.MinimumLevel.Information().WriteTo.Console());
 
@@ -27,16 +29,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.MapOpenApi();
 }
+
+app.UseCors(o => o.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
 app.UseHttpsRedirection();
-app.UseRouting();
-
-app.UseCors(builder => builder
-    .WithOrigins("http://localhost:5003", "https://localhost:5001")
-    .AllowAnyMethod()
-    .AllowAnyHeader());
-
 
 app.UseAuthorization();
-app.MapControllers();
-app.Run();
 
+app.MapControllers();
+
+app.Run();

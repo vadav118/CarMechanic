@@ -1,0 +1,32 @@
+.work-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container{
+    overflow-x:auto;
+    margin-top: 20px;
+}
+
+.form-container{
+    display: inline-block;
+    width: auto;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.work-table th, .work-table td{
+    padding: 8px;
+    text-align: center;
+}
+ 
+.work-table, .work-table th, .work-table td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+h3{
+    font-weight: bold;
+    font-size: 50px;
+}

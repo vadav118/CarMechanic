@@ -22,7 +22,6 @@ public class WorkService: IWorkService
         {
             return;
         }
-        work.CalculateEstimate();
         await _dbContext.Works.AddAsync(work);
         await _dbContext.SaveChangesAsync();
         

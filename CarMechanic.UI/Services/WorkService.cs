@@ -13,26 +13,26 @@ public class WorkService: IWorkService
 
     public async Task<List<Work>> GetAllWorks()
     {
-        return await _httpClient.GetFromJsonAsync<List<Work>>("/Work");
+        return await _httpClient.GetFromJsonAsync<List<Work>>("api/Work");
     }
 
     public async Task<Work> GetWorkById(int workId)
     {
-        return await _httpClient.GetFromJsonAsync<Work>($"Work/{workId}");
+        return await _httpClient.GetFromJsonAsync<Work>($"api/Work/{workId}");
     }
     
     public async Task AddWork(Work work)
     {
-        await _httpClient.PostAsJsonAsync("Work", work);
+        await _httpClient.PostAsJsonAsync("api/Work", work);
     }
     
     public async Task UpdateWork(int id, Work work)
     {
-        await _httpClient.PutAsJsonAsync($"Work/{id}", work);
+        await _httpClient.PutAsJsonAsync($"api/Work/{id}", work);
     }
 
     public async Task DeleteWork(int workId)
     {
-        await _httpClient.DeleteAsync($"Work/{workId}");
+        await _httpClient.DeleteAsync($"api/Work/{workId}");
     }
 }

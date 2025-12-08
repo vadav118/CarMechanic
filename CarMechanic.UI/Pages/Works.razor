@@ -1,29 +1,77 @@
 ﻿@page "/job"
 @inject IWorkService WorkService
+@inject NavigationManager NavigationManager
 @using CarMechanic.Shared
 @using CarMechanic.UI.Services
+@using CarMechanic.UI.Components
 
 <PageTitle>Works</PageTitle>
 
 <h3>Job List</h3>
 
+
+<button type="button" @onclick="ToggleAddWorkForm">
+    Add Job
+</button>
+<button type="button" onclick="ToggleUpdateWorkForm">
+   Update Job
+</button>
+
+
+@if (showAddForm)
+{   
+    <div class="add-form-container">
+        <WorkAddForm
+            Work="newWork"
+            OnWorkAdded="HandleWorkAdded"
+            OnCancel="CloseAddForm"></WorkAddForm>
+        </div>
+}
+    
+<div class="update-form-container">
+    
+</div>
+
+
 @if (_works is not null)
-{
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Customer Id</th>
-            <th>License Plate</th>
-            <th>Customer Id</th>
-            <th>Manufacturing Year</th>
-            <th>Work Description</th>
-            <th>Fault</th>
-            <th>Status</th>
-            <th>Hour Estimation</th>
-        </tr>
-        </thead>
-    </table>
+{   
+    <div class="table-container">
+        <table class="work-table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Customer Id</th>
+                <th>License Plate</th>
+                <th>Manufacturing Year</th>
+                <th>Category</th>
+                <th>Work Description</th>
+                <th>Fault</th>
+                <th>Status</th>
+                <th>Hour Estimation</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var work in _works)
+            {
+                <tr @key="work.Id">
+                    <td>@work.Id</td>
+                    <td>@work.CustomerId</td>
+                    <td>@work.LicensePlate</td>
+                    <td>@work.ManufacturingYear</td>
+                    <td>@GetCategory((int)work.Category)</td>
+                    <td>@work.WorkDescription</td>
+                    <td>@work.Fault</td>
+                    <td>@GetStatus((int)work.Status)</td>
+                    <td>@WorkEstimate.CalculateWorkEstimation(work)</td>
+                    <td>
+                        <button type="button" @onclick="() => Delete(work.Id)"> Delete</button>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
 }
 else
 {
@@ -31,7 +79,58 @@ else
 }
 
 @code{
+    
+    private bool showAddForm = false;
+    private Work newWork = new Work();
+    
+    
+    private async Task HandleWorkAdded()
+    {
+        _works = await WorkService.GetAllWorks();
+        showAddForm = false;
+    }
 
+    private void ToggleAddWorkForm()
+    {
+        showAddForm = true;
+    }
+
+    private void CloseAddForm()
+    {
+        showAddForm = false;
+    }
+
+    private Dictionary<int, string> Category = new()
+    {
+        [0] = "Body Work",
+        [1] = "Engine",
+        [2] = "Suspension",
+        [3] = "Breaks"
+    };
+    
+    private Dictionary<int, string> Status= new()
+    {
+        [0] = "Listed Work",
+        [1] = "Working",
+        [2] = "Completed Work"
+    };
+
+    private string GetStatus(int statusType)
+    {
+        return Status[statusType];
+    }
+
+    private string GetCategory(int categoryType)
+    {
+        return Category[categoryType];
+    }
+
+    private async Task Delete(int workId)
+    {
+        await WorkService.DeleteWork(workId);
+        _works = await WorkService.GetAllWorks();
+    }
+    
     private List<Work> _works;
 
     protected override async Task OnInitializedAsync()

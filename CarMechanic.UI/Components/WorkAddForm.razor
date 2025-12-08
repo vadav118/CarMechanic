@@ -1,0 +1,107 @@
+﻿@using CarMechanic.Shared
+@using CarMechanic.UI.Services
+@inject IWorkService WorkService
+
+<EditForm Model="Work" OnValidSubmit="OnValidSubmit"> 
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    
+    <div class="work-form">
+        <label>Customer Id</label>
+        <InputNumber class="form-control" @bind-Value="Work.CustomerId"></InputNumber>
+        <ValidationMessage For="() => Work.CustomerId"></ValidationMessage>
+    </div>
+    
+    <div class="work-form">
+        <label>License Plate</label>
+        <InputText class="form-control" @bind-Value="Work.LicensePlate"></InputText>
+        <ValidationMessage For="() => Work.LicensePlate"></ValidationMessage>
+    </div>
+    
+    <div class="work-form">
+        <label>Manufacturing Year</label>
+        <InputNumber class="form-control" @bind-Value="Work.ManufacturingYear"></InputNumber>
+        <ValidationMessage For="() => Work.ManufacturingYear"></ValidationMessage>
+    </div>
+    
+    <div class="work-dorm">
+        <label>Category</label>
+        <InputSelect class="form-control" @bind-Value="selectedCategoryName">
+            <option value="">Select Category</option>
+            @foreach (var category in Category.Keys)
+            {
+                <option value="@category">@category </option>
+            }
+            
+        </InputSelect>
+        <ValidationMessage For="() => Work.Category"></ValidationMessage>
+    </div>
+    
+    <div class="work-form">
+        <label>Work Description</label>
+        <InputText class="form-control" @bind-Value="Work.WorkDescription"></InputText>
+        <ValidationMessage For="() => Work.WorkDescription"></ValidationMessage>
+    </div>
+    
+    <div class="work-form">
+        <label>Fault</label>
+        <InputNumber class="form-control" @bind-Value="Work.Fault"></InputNumber>
+        <ValidationMessage For="() => Work.Fault"></ValidationMessage>
+    </div>
+    
+    <div class="work-dorm">
+        <label>Status</label>
+        <InputSelect class="form-control" @bind-Value="selectedStatusName">
+            <option value="">Select Status</option>
+            @foreach (var status in Status.Keys)
+            {
+                <option value="@status">@status </option>
+            }
+            
+        </InputSelect>
+        <ValidationMessage For="() => Work.Status"></ValidationMessage>
+    </div>
+    <button type="submit" class="submit-button">Save</button>
+    <button type="button" class="submit-button" @onclick="Cancel">Cancel</button>  
+</EditForm>
+
+@code {
+    
+    private Dictionary<string,WorkCategory> Category = new()
+    {
+        ["Body Work"] = WorkCategory.BodyWork ,
+        ["Engine"] = WorkCategory.Engine ,
+        ["Suspension"] = WorkCategory.Suspension ,
+        ["Breaks"] = WorkCategory.Breaks
+    };
+    
+    private Dictionary<string,WorkStatus> Status= new()
+    {
+        ["Listed Work"] = WorkStatus.ListedWork,
+        ["Working"] =  WorkStatus.Working,
+        ["Completed Work"] =  WorkStatus.Completed
+    };
+
+    private string selectedStatusName = "";
+    private string selectedCategoryName= ""; 
+    [Parameter]
+    public Work Work { get; set; }
+  
+    [Parameter]
+    public EventCallback OnWorkAdded { get; set; }
+    [Parameter]
+    public EventCallback OnCancel { get; set; }
+
+    private async Task OnValidSubmit()
+    {
+        Work.Category = Category[selectedCategoryName];
+        Work.Status = Status[selectedStatusName];
+        await WorkService.AddWork(Work);
+        await OnWorkAdded.InvokeAsync();
+    }
+    
+    private void Cancel()
+    {
+        OnCancel.InvokeAsync();
+    }
+}
