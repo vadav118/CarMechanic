@@ -22,7 +22,7 @@
 
 @if (showAddForm)
 {   
-    <div class="add-form-container">
+    <div class="form-container">
         <WorkAddForm
             Work="newWork"
             OnWorkAdded="HandleWorkAdded"
@@ -32,7 +32,7 @@
     
 @if (showUpdateForm)
 {
-    <div class="update-form-container">
+    <div class="form-container">
         <WorkUpdateForm
             Work="newWork"
             OnWorkUpdate="HandleWorkUpdate"
@@ -104,12 +104,23 @@ else
 
     private async Task SearchById()
     {
-        if (searchId > 0)
+        if (searchId <=0)
         {
-            var workbyid= await WorkService.GetWorkById(searchId);
-        
-            _works = workbyid != null ? new List<Work>() {workbyid} : new List<Work>(){};
+            _works = await WorkService.GetAllWorks();
+            return;
         }
+        
+        try
+        {
+            var workbyid = await WorkService.GetWorkById(searchId);
+
+            _works = workbyid != null ? new List<Work>() { workbyid } : new List<Work>() { };
+        }
+        catch
+        {
+            _works= new List<Work>() { };
+        }
+        
     }
     
     private async Task HandleWorkUpdate()

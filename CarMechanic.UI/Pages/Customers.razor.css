@@ -1,4 +1,4 @@
-.work-table{
+﻿.customer-table{
     width: 100%;
     border-collapse: collapse;
 }
@@ -28,12 +28,12 @@ input{
     border-radius: 4px;
 }
 
-.work-table th, .work-table td{
+.customer-table th, .customer-table td{
     padding: 8px;
     text-align: center;
 }
- 
-.work-table, .work-table th, .work-table td{
+
+.customer-table, .customer-table th, .customer-table td{
     border: 1px solid black;
     border-collapse: collapse;
 }

@@ -40,6 +40,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/Components/CustomerAddForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDdXN0b21lckFkZEZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-v162jsapwc
+
+[C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/Components/CustomerUpdateForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDdXN0b21lclVwZGF0ZUZvcm0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-um4uy8yc01
+
 [C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/Components/WorkAddForm.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xXb3JrQWRkRm9ybS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-g4oen9yu35
@@ -51,6 +59,10 @@ build_metadata.AdditionalFiles.CssScope = b-jyfzhk0f7u
 [C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-a4g368ca9w
+
+[C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/Pages/Customers.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tZXJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-ny8lw22z9y
 
 [C:/Users/tntlo/RiderProjects/CarMechanic/CarMechanic.UI/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==

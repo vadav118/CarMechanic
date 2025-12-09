@@ -1,0 +1,59 @@
+﻿@using CarMechanic.Shared
+@using CarMechanic.UI.Services
+@inject ICustomerService CustomerService
+
+<EditForm Model="Customer" OnValidSubmit="OnValidSubmit"> 
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    
+    <div class="customer-form">
+        <label>Id</label>
+        <InputNumber class="form-control" @bind-Value="Customer.Id"></InputNumber>
+        <ValidationMessage For="() => Customer.Id"></ValidationMessage>
+    </div>
+    
+    <div class="customer-form">
+        <label>Name</label>
+        <InputText class="form-control" @bind-Value="Customer.Name"></InputText>
+        <ValidationMessage For="() => Customer.Name"></ValidationMessage>
+    </div>
+    
+    <div class="customer-form">
+        <label>Address</label>
+        <InputText class="form-control" @bind-Value="Customer.Address"></InputText>
+        <ValidationMessage For="() => Customer.Address"></ValidationMessage>
+    </div>
+    
+    <div class="customer-form">
+        <label>Address</label>
+        <InputText class="form-control" @bind-Value="Customer.EmailAddress"></InputText>
+        <ValidationMessage For="() => Customer.EmailAddress"></ValidationMessage>
+    </div>
+
+    
+    <button type="submit" class="submit-button">Save</button>
+    <button type="button" class="submit-button" @onclick="Cancel">Cancel</button>  
+</EditForm>
+
+@code {
+    
+    [Parameter]
+    public Customer Customer { get; set; }
+  
+    [Parameter]
+    public EventCallback OnCustomerUpdate { get; set; }
+    [Parameter]
+    public EventCallback OnCancel { get; set; }
+
+    private async Task OnValidSubmit()
+    {
+       
+        await CustomerService.UpdateCustomer(Customer.Id,Customer);
+        await OnCustomerUpdate.InvokeAsync();
+    }
+    
+    private void Cancel()
+    {
+        OnCancel.InvokeAsync();
+    }
+}

@@ -1,9 +1,7 @@
-﻿.form-control, .work-form, button, input{
+﻿.form-control .customer-form button{
     background-color: #2d2d2d;
     color: lightyellow;
 }
-
 label {
     color:lightyellow;
 }
-

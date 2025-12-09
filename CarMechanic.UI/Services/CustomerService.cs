@@ -18,7 +18,7 @@ public class CustomerService: ICustomerService
     
     public async Task<List<Work>> GetWorksByCustomerId(int customerId)
     {
-        return await _httpClient.GetFromJsonAsync<List<Work>>($"api/Customer/{customerId}");
+        return await _httpClient.GetFromJsonAsync<List<Work>>($"api/Customer/{customerId}/works");
     }
 
     public async Task<Customer> GetCustomerById(int customerId)

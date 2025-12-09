@@ -1,0 +1,244 @@
+﻿@page "/customers"
+@inject ICustomerService CustomerService
+@inject NavigationManager NavigationManager
+@using CarMechanic.Shared
+@using CarMechanic.UI.Services
+@using CarMechanic.UI.Components
+
+<PageTitle>Customers</PageTitle>
+
+<h3>Customers List</h3>
+
+
+<button type="button" @onclick="ToggleAddCustomerForm">
+    Add Customers
+</button>
+<button type="button" @onclick="ToggleUpdateCustomerForm">
+    Update Customers
+</button>
+<input type="number" @bind-value="searchId"/>
+<button type="button" @onclick="SearchById">Search</button>
+
+
+@if (showAddForm)
+{   
+    <div class="form-container">
+        <CustomerAddForm
+            Customer="newCustomer"
+            OnCustomerAdded="HandleCustomerAdded"
+            OnCancel="CloseAddForm"></CustomerAddForm>
+        </div>
+}
+    
+@if (showUpdateForm)
+{
+    <div class="form-container">
+        <CustomerUpdateForm
+            customer="newCustomer"
+            OnCustomerUpdate="HandleCustomerUpdated"
+            OnCancel="CloseUpdateForm">
+        </CustomerUpdateForm>
+    </div>
+}
+
+
+@if (_customers is not null)
+{   
+    <div class="table-container">
+        <table class="customer-table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email Address</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var customer in _customers)
+            {
+                <tr @key="customer.Id">
+                    <td>@customer.Id</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.Address</td>
+                    <td>@customer.EmailAddress</td>
+                    <td>
+                        <button type="button" @onclick="() => GetJobsById(customer.Id)">Search Jobs</button>
+                    </td>
+                    <td>
+                        <button type="button" @onclick="() => Delete(customer.Id)">Delete</button>
+                    </td>
+                </tr>
+                
+                @if (expandedCustomerId == customer.Id && _idWork != null && _idWork.Any())
+                { 
+                    <tr>
+                        <td colspan="6">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Customer Id</th>
+                                    <th>License Plate</th>
+                                    <th>Manufacturing Year</th>
+                                    <th>Category</th>
+                                    <th>Work Description</th>
+                                    <th>Fault</th>
+                                    <th>Status</th>
+                                    <th>Hour Estimation</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var work in _idWork)
+                                {
+                                    <tr @key="work.Id">
+                                        <td>@work.Id</td>
+                                        <td>@work.CustomerId</td>
+                                        <td>@work.LicensePlate</td>
+                                        <td>@work.ManufacturingYear</td>
+                                        <td>@GetCategory((int)work.Category)</td>
+                                        <td>@work.WorkDescription</td>
+                                        <td>@work.Fault</td>
+                                        <td>@GetStatus((int)work.Status)</td>
+                                        <td>@WorkEstimate.CalculateWorkEstimation(work)</td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                }
+                
+            }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p>Loading....</p>
+}
+
+@code{
+    
+    private int searchId;
+    private bool showAddForm = false;
+    private bool showUpdateForm = false;
+    private Customer newCustomer = new Customer();
+    private List<Work> _idWork;
+    private int? expandedCustomerId = null;
+    
+    private Dictionary<int, string> Category = new()
+    {
+        [0] = "Body Work",
+        [1] = "Engine",
+        [2] = "Suspension",
+        [3] = "Breaks"
+    };
+    
+    private Dictionary<int, string> Status= new()
+    {
+        [0] = "Listed Work",
+        [1] = "Working",
+        [2] = "Completed Work"
+    };
+
+    private string GetStatus(int statusType)
+    {
+        return Status[statusType];
+    }
+
+    private string GetCategory(int categoryType)
+    {
+        return Category[categoryType];
+    }
+
+    
+    
+    private async Task HandleCustomerAdded()
+    {
+        _customers = await CustomerService.GetAllCustomers();
+        showAddForm = false;
+        newCustomer = new Customer();
+    }
+
+    private async Task SearchById()
+    {
+        if (searchId <=0)
+        {
+            _customers = await CustomerService.GetAllCustomers();
+            return;
+        }
+        
+        try
+        {
+            var customerbyid = await CustomerService.GetCustomerById(searchId);
+
+            _customers = customerbyid != null ? new List<Customer>() { customerbyid } : new List<Customer>() { };
+        }
+        catch
+        {
+            _customers= new List<Customer>() { };
+        }
+        
+    }
+
+    private async Task GetJobsById(int id)
+    {
+        if (expandedCustomerId == id)
+        {
+            expandedCustomerId = null;
+            _idWork = new List<Work>();
+        }
+        else
+        {
+            expandedCustomerId = id;
+            _idWork =await CustomerService.GetWorksByCustomerId(id);
+        }
+    }
+    
+    private async Task HandleCustomerUpdated()
+    {
+        _customers = await CustomerService.GetAllCustomers();
+        showUpdateForm = false;
+        newCustomer = new Customer();
+    }
+
+    private void ToggleUpdateCustomerForm()
+    {
+        showUpdateForm = !showUpdateForm;
+        if (showUpdateForm) showAddForm = false;
+    }
+    
+    private void ToggleAddCustomerForm()
+    {
+        showAddForm = !showAddForm;
+        if (showAddForm) showUpdateForm = false;
+    }
+    
+    private void CloseUpdateForm()
+    {
+        showUpdateForm = false;
+    }
+
+    private void CloseAddForm()
+    {
+        showAddForm = false;
+    }
+    
+
+    private async Task Delete(int customerId)
+    {
+        await CustomerService.DeleteCustomer(customerId);
+        _customers = await CustomerService.GetAllCustomers();
+    }
+    
+    private List<Customer> _customers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _customers = await CustomerService.GetAllCustomers();
+    }
+
+}
